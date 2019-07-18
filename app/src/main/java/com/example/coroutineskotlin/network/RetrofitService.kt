@@ -7,5 +7,5 @@ import retrofit2.http.Query
 
 interface RetrofitService {
     @GET("/posts")
-    suspend fun getPosts(@Query("limit") limit: Int): Response<List<Post>>
+    suspend fun getPosts(): Response<List<Post>>
 }

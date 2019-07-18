@@ -24,11 +24,13 @@ class MainActivity : AppCompatActivity() {
 
         val service = RetrofitFactory.makeRetrofitService()
         CoroutineScope(Dispatchers.IO).launch {
-            val response = service.getPosts(10)
+            val response = service.getPosts()
             try {
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
-                        println(response.body())
+                        for (item in response.body()!!) {
+                            println(item.title)
+                        }
                     }
                 }
             } catch (e: Exception) {
